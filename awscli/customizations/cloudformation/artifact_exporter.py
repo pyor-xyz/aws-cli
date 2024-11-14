@@ -518,6 +518,14 @@ class CodeCommitRepositoryS3Resource(ResourceWithS3UrlDict):
     PACKAGE_NULL_PROPERTY = False
     FORCE_ZIP = True
 
+class CloudFormationStacksetResource(CloudFormationStackResource):
+    """
+    Represents CloudFormation::Stackset Resource that can refer to a
+    stack template via TemplateURL property.
+    """
+
+    RESOURCE_TYPE = "AWS::CloudFormation::StackSet"
+    PROPERTY_NAME = "TemplateURL"
 
 RESOURCES_EXPORT_LIST = [
     ServerlessFunctionResource,
@@ -531,6 +539,7 @@ RESOURCES_EXPORT_LIST = [
     LambdaFunctionResource,
     ElasticBeanstalkApplicationVersion,
     CloudFormationStackResource,
+    CloudFormationStacksetResource,
     ServerlessApplicationResource,
     ServerlessLayerVersionResource,
     LambdaLayerVersionResource,
